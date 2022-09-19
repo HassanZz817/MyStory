@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">MyStory</string>
+    <string name="user_name">Userame</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
     <!--    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-->
 </resources>
