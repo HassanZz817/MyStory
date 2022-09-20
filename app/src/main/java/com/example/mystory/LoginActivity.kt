@@ -36,7 +36,7 @@ class LoginActivity : AppCompatActivity() {
 
         arr.add(User("test@test.com", "1234"))
         arr.add(User("a", "1"))
-        arr.add(User("black@ass.com", "123"))
+        arr.add(User("tfshan05@gmail.com", "123"))
 
         buttonLogin.setOnClickListener{
             val username = editTextUsername.text.toString()
