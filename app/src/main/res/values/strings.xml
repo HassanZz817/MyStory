@@ -3,8 +3,8 @@
     <string name="user_name">Username</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
-        <string name="open">open</string>
-        <string name="close">close</string>
+    <string name="open">open</string>
+    <string name="close">close</string>
 
     <!--    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-->
 </resources>

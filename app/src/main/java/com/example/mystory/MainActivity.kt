@@ -10,7 +10,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.Recycler
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var toolbarView: Toolbar
     lateinit var navigationView: NavigationView
     lateinit var recyclerView: RecyclerView
+    lateinit var buttonAddStory: FloatingActionButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         setupDrawer()
         updateEmailInHeader(email!!)
         drawerClick()
+        openAddStoryActivity()
     }
     private fun connectViews(){
 
@@ -39,6 +41,7 @@ class MainActivity : AppCompatActivity() {
         toolbarView = findViewById(R.id.toolbar)
         navigationView = findViewById(R.id.navView)
         recyclerView = findViewById(R.id.storiesRecyclerView)
+        buttonAddStory = findViewById(R.id.btnAddStory)
     }
     private fun setupDrawer(){
         val toggle = ActionBarDrawerToggle(this,drawerLayout,R.string.open,R.string.close)
@@ -52,14 +55,13 @@ class MainActivity : AppCompatActivity() {
         textViewEmail.text = email
 
     }
+
     private fun drawerClick(){
         navigationView.setNavigationItemSelectedListener{
             when(it.itemId) {
                 R.id.home -> {
                 drawerLayout.closeDrawer(GravityCompat.START)
                     true
-
-
                 }
                 R.id.logout -> {
                     finish()
@@ -77,6 +79,12 @@ class MainActivity : AppCompatActivity() {
                 drawerLayout.openDrawer(GravityCompat.START)
                 true
             } else -> true
+        }
+    }
+    private fun openAddStoryActivity(){
+        buttonAddStory.setOnClickListener(){
+            val i = Intent(this,AddStoryActivity::class.java)
+            startActivity(i)
         }
     }
 }

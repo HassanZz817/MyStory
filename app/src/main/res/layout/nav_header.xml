@@ -12,14 +12,13 @@
         android:id="@+id/imageViewMoon"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/moon"
         android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
         android:layout_marginBottom="12dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/moon"
         app:layout_constraintBottom_toBottomOf="parent"
-         />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
     <TextView
         android:id="@+id/etUsername"
         android:layout_width="wrap_content"
