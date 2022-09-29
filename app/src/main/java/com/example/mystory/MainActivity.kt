@@ -26,12 +26,19 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val email = intent.getStringExtra("username")
+
         connectViews()
+
         setSupportActionBar(toolbarView)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         setupDrawer()
-        updateEmailInHeader(email!!)
+        try {
+            updateEmailInHeader(email!!)
+
+        }catch (_:java.lang.NullPointerException){
+
+        }
         drawerClick()
         openAddStoryActivity()
         displayStories()
@@ -42,7 +49,7 @@ class MainActivity : AppCompatActivity() {
         toolbarView = findViewById(R.id.toolbar)
         navigationView = findViewById(R.id.navView)
         recyclerView = findViewById(R.id.storiesRecyclerView)
-        buttonAddStory = findViewById(R.id.btnAddStory)
+        this.buttonAddStory = findViewById(R.id.btnAddStory)
     }
     private fun setupDrawer(){
         val toggle = ActionBarDrawerToggle(this,drawerLayout,R.string.open,R.string.close)
@@ -83,7 +90,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
     private fun openAddStoryActivity(){
-        buttonAddStory.setOnClickListener(){
+        buttonAddStory.setOnClickListener {
             val i = Intent(this,AddStoryActivity::class.java)
             startActivity(i)
         }
@@ -92,7 +99,7 @@ class MainActivity : AppCompatActivity() {
         val storiesArray = ArrayList<Story>()
         storiesArray.add(Story("here goes the title","here you write subtitle","" +
 "fdfdfdfxfdfdv vcvdfgg"))
-        storiesArray.add(Story("this just to show you that the letter change ","here you write subtitle","" +
+        storiesArray.add(Story("this change ","here you write subtitle","" +
                 "and here you write description to your story in depth"))
 
         storiesArray.add(Story("Love kotlin","here you write subtitle","" +
