@@ -1,17 +1,20 @@
 package com.example.mystory
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import kotlin.random.Random
 
 
-class CustomAdapter(val storiesList:ArrayList<Story>, val context:Context): RecyclerView.Adapter<CustomAdapter.DataHolder>() {
+class CustomAdapter(val storiesList:ArrayList<Story>, val context:Context)
+    : RecyclerView.Adapter<CustomAdapter.DataHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DataHolder {
         val dataHolder = DataHolder(LayoutInflater.from(parent.context).inflate
             (R.layout.custom_layout,parent,false))
@@ -23,6 +26,13 @@ class CustomAdapter(val storiesList:ArrayList<Story>, val context:Context): Recy
         holder.subtitle.text = story.subtitle
         holder.storyLetter.text = story.title[0].toString()
         generateColors(holder,position)
+
+        holder.itemView.setOnClickListener{
+            val i = Intent(context,StoryDetailsActivity::class.java)
+            i.putExtra("title",story.title)
+            i.putExtra("desc",story.description)
+            context.startActivity(i)
+        }
 
 
     }

@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
         updateEmailInHeader(email!!)
         drawerClick()
         openAddStoryActivity()
+        displayStories()
     }
     private fun connectViews(){
 
@@ -86,5 +87,19 @@ class MainActivity : AppCompatActivity() {
             val i = Intent(this,AddStoryActivity::class.java)
             startActivity(i)
         }
+    }
+    private fun displayStories(){
+        val storiesArray = ArrayList<Story>()
+        storiesArray.add(Story("here goes the title","here you write subtitle","" +
+"fdfdfdfxfdfdv vcvdfgg"))
+        storiesArray.add(Story("this just to show you that the letter change ","here you write subtitle","" +
+                "and here you write description to your story in depth"))
+
+        storiesArray.add(Story("Love kotlin","here you write subtitle","" +
+                "and here you write description to your story in depth"))
+
+        val customAdapter = CustomAdapter(storiesArray,this)
+        recyclerView.adapter = customAdapter
+
     }
 }
