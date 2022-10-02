@@ -19,6 +19,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var toolbarView: Toolbar
     lateinit var navigationView: NavigationView
     lateinit var recyclerView: RecyclerView
+    private var storiesArray = ArrayList<Story>()
+
     lateinit var buttonAddStory: FloatingActionButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,6 +44,7 @@ class MainActivity : AppCompatActivity() {
         drawerClick()
         openAddStoryActivity()
         displayStories()
+
     }
     private fun connectViews(){
 
@@ -95,18 +98,37 @@ class MainActivity : AppCompatActivity() {
             startActivity(i)
         }
     }
-    private fun displayStories(){
-        val storiesArray = ArrayList<Story>()
-        storiesArray.add(Story("here goes the title","here you write subtitle","" +
-"fdfdfdfxfdfdv vcvdfgg"))
-        storiesArray.add(Story("this change ","here you write subtitle","" +
-                "and here you write description to your story in depth"))
+    private fun displayStories() {
 
-        storiesArray.add(Story("Love kotlin","here you write subtitle","" +
-                "and here you write description to your story in depth"))
+        storiesArray.add(
+            Story(
+                "here goes the title", "here you write subtitle", "jhj"
+            ))
+        storiesArray.add(
+            Story(
+                "this change ", "here you write subtitle", "jhj"
+            ))
 
-        val customAdapter = CustomAdapter(storiesArray,this)
+        storiesArray.add(
+            Story(
+                "Love kotlin", "here you write subtitle", "ghghghdt"
+            ))
+        val customAdapter = CustomAdapter(storiesArray, this)
         recyclerView.adapter = customAdapter
 
+        if (intent.getStringExtra("title") != null) {
+            val title = intent.getStringExtra("title")
+            val subtitle = intent.getStringExtra("subtitle")
+            val desc = intent.getStringExtra("desc")
+
+            val newStory   = Story(title!!,subtitle!!,desc!!)
+
+            storiesArray.add(newStory)
+            customAdapter.notifyDataSetChanged()
+
+        }
     }
+
+
 }
+

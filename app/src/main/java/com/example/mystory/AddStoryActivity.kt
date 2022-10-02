@@ -30,9 +30,9 @@ class AddStoryActivity : AppCompatActivity() {
     }
     private fun fieldsValidation(){
         btnAddStory.setOnClickListener{
-            val title = editTextTitle.text
-            val subTitle = editTextSubtitle.text
-            val desc = editTextDesc.text
+            val title = editTextTitle.text.toString()
+            val subTitle = editTextSubtitle.text.toString()
+            val desc = editTextDesc.text.toString()
 
             when {
                 title.isEmpty() -> {

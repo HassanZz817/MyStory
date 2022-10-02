@@ -22,6 +22,7 @@ class StoryDetailsActivity : AppCompatActivity() {
 
         // Receive Var
         val title = intent.getStringExtra("title")
+        val subTitle = intent.getStringExtra("subtitle")
         val description = intent.getStringExtra("desc")
 
         supportActionBar?.title = title
